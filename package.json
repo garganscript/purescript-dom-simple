@@ -1,0 +1,25 @@
+{
+  "name": "purescript-dom-simple",
+  "version": "0.1.0",
+  "description": "Simple DOM bindings for purescript",
+  "scripts": {
+    "rebuild-set": "spago psc-package-insdhall",
+    "install-ps": "psc-package install",
+    "build": "pulp browserify -I test --main Test.Main > output/bundle.js",
+    "test": "karma start"
+  },
+  "author": "James Laver",
+  "license": "MPL-2.0",
+  "devDependencies": {
+    "karma": "^4.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-cli": "^2.0.0",
+    "karma-mocha": "^1.3.0",
+    "mocha": "^6.0.0",
+    "psc-package": "^3.0.1",
+    "pulp": "^12.4.0",
+    "purescript": "^0.12.5",
+    "spago": "^0.7.5"
+  },
+  "dependencies": {}
+}

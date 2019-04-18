@@ -1,0 +1,14 @@
+{
+  "name": "dom-simple",
+  "set": "local",
+  "source": ".psc-package",
+  "depends":
+    [ "console"
+    , "effect"
+    , "functions"
+    , "nullable"
+    , "prelude"
+    , "spec"
+    , "spec-mocha"
+    , "unsafe-coerce" ]
+}
