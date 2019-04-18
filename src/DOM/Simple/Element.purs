@@ -1,6 +1,7 @@
 module DOM.Simple.Element
   ( class ElementNode
   , hasAttr, attr, attrNames, setAttr
+  , innerHTML
   , module DOM.Simple.EventListener
   , module DOM.Simple.Child
   , module DOM.Simple.Node
@@ -55,3 +56,8 @@ attrNames :: forall e. ElementNode e => e -> Array String
 attrNames = _getAttributeNames
 
 foreign import _getAttributeNames :: forall e. e -> Array String
+
+innerHTML :: forall e. ElementNode e => e -> String
+innerHTML = _innerHTML
+
+foreign import _innerHTML :: forall e. e -> String
