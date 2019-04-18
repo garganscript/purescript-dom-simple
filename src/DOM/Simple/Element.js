@@ -1,6 +1,6 @@
 'use strict';
 
-function prop(p) {
+function prop(prop) {
   return function(i) {
     const ret = i[prop];
     if (typeof ret === 'undefined') return null;
