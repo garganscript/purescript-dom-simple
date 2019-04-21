@@ -1,17 +1,14 @@
 module DOM.Simple.Document
-  ( document, global
-  , createElement, createElement', createTextNode )
+  ( document, createElement, createElement', createTextNode )
   where
 
 import DOM.Simple.Types ( Document, Element, Text )
-import Data.Function.Uncurried ( Fn2, runFn2 )
-
--- | The global document. Will be undefined on node.
-foreign import global :: Document
+import FFI.Simple ( callMethod, applyMethod )
+import DOM.Simple.Window ( global ) 
 
 -- | The global document. Will be undefined on node.
 document :: Document
-document = global
+document = global "document"
 
 -- | Creates a new DOM element of the given tag using the global document
 createElement :: String -> Element
@@ -19,10 +16,12 @@ createElement = createElement' document
 
 -- | Creates a new DOM element of the given tag using the provided document
 createElement' :: Document -> String -> Element
-createElement' = runFn2 _createElement
+createElement' d s = applyMethod "createElement" d [s]
+
+createTextNode :: String -> Text
+createTextNode = createTextNode' document
 
 -- | Create a text node with the given text
-foreign import createTextNode :: String -> Text
-
-foreign import _createElement :: Fn2 Document String Element
+createTextNode' :: Document -> String -> Text
+createTextNode' d s = applyMethod "createTextNode" d [s]
 

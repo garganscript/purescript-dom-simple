@@ -5,6 +5,7 @@
   "depends":
     [ "console"
     , "effect"
+    , "ffi-simple"
     , "functions"
     , "nullable"
     , "prelude"

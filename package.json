@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Simple DOM bindings for purescript",
   "scripts": {
+    "upgrade-set": "spago package-set-upgrade",
     "rebuild-set": "spago psc-package-insdhall",
     "install-ps": "psc-package install",
     "build": "pulp browserify -I test --main Test.Main > output/bundle.js",

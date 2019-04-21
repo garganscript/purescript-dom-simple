@@ -9,7 +9,7 @@ module DOM.Simple
 import DOM.Simple.Types
 import DOM.Simple.Element
 import DOM.Simple.Document
-  ( createElement, createElement', createTextNode, document, global )
+  ( createElement, createElement', createTextNode, document )
 import DOM.Simple.Node
 import DOM.Simple.Window ( Window, window )
 

@@ -9,7 +9,7 @@ module DOM.Simple.Element
   , module DOM.Simple.Sibling
   ) where
 
-import Prelude ( Unit, (<<<) )
+import Prelude ( Unit, ($), (<<<), pure )
 import Data.Function.Uncurried ( Fn2, runFn2 )
 import Data.Maybe ( Maybe )
 import Data.Nullable ( Nullable, toMaybe )
@@ -26,6 +26,7 @@ import DOM.Simple.Parent
   , childCount, children, firstChildElement, lastChildElement
   , append, prepend, querySelector, querySelectorAll
   )
+import FFI.Simple ( callMethod, applyMethod, getProperty )
 
 class ElementNode e
 
@@ -36,28 +37,18 @@ instance elementNodeElement :: ElementNode Element
 
 -- | Checks whether an Element has a given attribute
 hasAttr :: forall e. ElementNode e => e -> String -> Boolean
-hasAttr = runFn2 _hasAttribute
-
-foreign import _hasAttribute :: forall e. Fn2 e String Boolean
+hasAttr e p = applyMethod "hasAttribute" e [p]
 
 -- | Gets the value of an attribute, if the element has it
 attr :: forall e. ElementNode e => e -> String -> Maybe String
-attr e = toMaybe <<< runFn2 _getAttribute e
-
-foreign import _getAttribute :: forall e. Fn2 e String (Nullable String)
+attr e a = toMaybe $ applyMethod "getAttribute" e [a]
 
 setAttr :: forall e. ElementNode e => e -> String -> String -> Effect Unit
-setAttr = runEffectFn3 _setAttribute
-
-foreign import _setAttribute :: forall e. EffectFn3 e String String Unit
+setAttr e a v = pure $ applyMethod "setAttribute" e [a, v]
 
 -- | Gets the names of the attributes the element possesses
 attrNames :: forall e. ElementNode e => e -> Array String
-attrNames = _getAttributeNames
-
-foreign import _getAttributeNames :: forall e. e -> Array String
+attrNames = callMethod "getAttributeNames"
 
 innerHTML :: forall e. ElementNode e => e -> String
-innerHTML = _innerHTML
-
-foreign import _innerHTML :: forall e. e -> String
+innerHTML = getProperty "innerHTML"

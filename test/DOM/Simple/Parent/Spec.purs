@@ -18,7 +18,7 @@ import DOM.Simple.Parent as Parent
 
 spec :: Spec Unit
 spec =
-  describe "Getting and setting attributes" do
+  describe "Adding and retrieving children" do
     it "should just work" do
       let e = Document.createElement "div"
       Parent.childCount e `shouldEqual` 0
