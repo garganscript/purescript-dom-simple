@@ -26,7 +26,7 @@ import DOM.Simple.Parent
   , childCount, children, firstChildElement, lastChildElement
   , append, prepend, querySelector, querySelectorAll
   )
-import FFI.Simple ( callMethod, applyMethod, getProperty )
+import FFI.Simple ( (...), (..), delay )
 
 class ElementNode e
 
@@ -37,18 +37,18 @@ instance elementNodeElement :: ElementNode Element
 
 -- | Checks whether an Element has a given attribute
 hasAttr :: forall e. ElementNode e => e -> String -> Boolean
-hasAttr e p = applyMethod "hasAttribute" e [p]
+hasAttr e p = e ... "hasAttribute" $ [p]
 
 -- | Gets the value of an attribute, if the element has it
 attr :: forall e. ElementNode e => e -> String -> Maybe String
-attr e a = toMaybe $ applyMethod "getAttribute" e [a]
+attr e a = toMaybe $ e ... "getAttribute" $ [a]
 
 setAttr :: forall e. ElementNode e => e -> String -> String -> Effect Unit
-setAttr e a v = pure $ applyMethod "setAttribute" e [a, v]
+setAttr e a v = delay $ \_ -> pure $ e ... "setAttribute" $ [a, v]
 
 -- | Gets the names of the attributes the element possesses
 attrNames :: forall e. ElementNode e => e -> Array String
-attrNames = callMethod "getAttributeNames"
+attrNames e = e ... "getAttributeNames" $ []
 
 innerHTML :: forall e. ElementNode e => e -> String
-innerHTML = getProperty "innerHTML"
+innerHTML e = e .. "innerHTML"

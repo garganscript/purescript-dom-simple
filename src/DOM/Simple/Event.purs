@@ -2,15 +2,15 @@ module DOM.Simple.Event
   ( click
   ) where
 
-import Prelude ( Unit, (<<<), pure )
+import Prelude ( Unit, ($) )
 import Effect ( Effect )
 import DOM.Simple.Types ( Element )
-import FFI.Simple ( callMethod )
+import FFI.Simple ( (...), delay )
 
 class Event e
 
 click :: Element -> Effect Unit
-click = pure <<< callMethod "click"
+click e = delay $ \_ -> e ... "click" $ []
 
 -- stopPropagation :: forall e. Event e => e -> Effect Unit
 -- stopImmediatePropagation :: SyntheticEvent -> Effect Unit

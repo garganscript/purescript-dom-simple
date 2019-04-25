@@ -3,12 +3,12 @@ module DOM.Simple.Node
   , name
   ) where
 
-import Prelude ( Unit, ($), (<<<), pure )
+import Prelude ( Unit, ($), pure )
 import Effect ( Effect )
 import Data.Maybe ( Maybe )
 import Data.Nullable ( toMaybe )
 import DOM.Simple.Types ( Document, Element )
-import FFI.Simple ( (..), (...), getProperty, setProperty, callMethod )
+import FFI.Simple ( (..), (...), getProperty, setProperty, delay )
 
 class Node n
 
@@ -38,13 +38,13 @@ textContent :: forall n. Node n => n -> String
 textContent = getProperty "textContent"
 
 setTextContent :: forall n. Node n => n -> String -> Effect n
-setTextContent n = pure <<< setProperty "textContent" n
+setTextContent n t = delay $ \_ -> pure $ setProperty "textContent" n t
 
 appendChild :: forall n m. Node n => Node m => n -> m -> Effect Unit
-appendChild n c = pure $ n ... "appendChild" $ [c]
+appendChild n c = delay $ \_ -> pure $ n ... "appendChild" $ [c]
 
 clone :: forall n. Node n => n -> n
-clone = callMethod "cloneNode"
+clone n = n ... "cloneNode" $ []
 
 -- compareDocumentPosition
 -- getRootNode

@@ -9,7 +9,7 @@ import Prelude ( Unit, ($), (<<<), pure )
 import Data.Maybe ( Maybe )
 import Data.Nullable ( Nullable, toMaybe )
 import Effect ( Effect )
-import FFI.Simple ( getProperty, applyMethod )
+import FFI.Simple ( getProperty, applyMethod, delay )
 import FFI.Simple.PseudoArray as Array
 
 import DOM.Simple.Types ( Element, Document, Fragment )
@@ -45,9 +45,9 @@ prepend :: forall n. ParentNode n => n -> Array Element -> Effect Unit
 prepend n e = pure $ applyMethod "prepend" n e
 
 querySelector :: forall n. ParentNode n => n -> String -> Effect (Maybe Element)
-querySelector n s = pure $ toMaybe $ applyMethod "querySelector" n [s]
+querySelector n s = delay $ \_ -> pure $ toMaybe $ applyMethod "querySelector" n [s]
 
 querySelectorAll :: forall n. ParentNode n => n -> String -> Effect (Array Element)
-querySelectorAll n s = pure $ applyMethod "querySelectorAll" n [s]
+querySelectorAll n s = delay \_ -> pure $ Array.from $ applyMethod "querySelectorAll" n [s]
 
 
