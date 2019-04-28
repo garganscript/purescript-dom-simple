@@ -52,6 +52,31 @@ that. How would you even reasonably handle that case?
 
 ## Changelog
 
+### 0.2.1
+
+New:
+
+* `D.S.Event`:
+  * `class IsMouseEvent`
+
+Fixes:
+
+* More instances
+
+
+Breakages:
+
+* `D.S.EventListener`:
+  * `class EventListener` -> `class D.S.Types.IsEventListener`
+* `D.S.Node`:
+  * `class IsNode` -> `class D.S.Types.IsNode`
+* `D.S.Element`:
+  * `class ElementNode` -> `class D.S.Types.IsElement`
+* `D.S.Child`:
+  * `class ChildNode` -> `class D.S.Types.IsChild`
+* `D.S.Parent`:
+  * `class ParentNode` -> `class D.S.Types.IsParent`
+
 ### 0.2.0
 
 New:

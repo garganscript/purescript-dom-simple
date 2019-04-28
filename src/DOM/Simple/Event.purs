@@ -115,6 +115,12 @@ instance transitionEventIsEvent :: IsEvent TransitionEvent
 instance uiEventIsEvent :: IsEvent UIEvent
 instance wheelEventIsEvent :: IsEvent WheelEvent
 
+class IsEvent e <= IsMouseEvent e
+
+instance mouseEventIsMouseEvent :: IsMouseEvent MouseEvent
+instance mouseButtonEventIsMouseEvent :: IsMouseEvent MouseButtonEvent
+instance pointerEventIsMouseEvent :: IsMouseEvent PointerEvent
+
 data Events
   = Basic Event
   | Animation AnimationEvent
@@ -367,12 +373,13 @@ preventDefault :: forall e. IsEvent e => e -> Effect Unit
 preventDefault e = delay unit $ \_ -> pure $ e ... "preventDefault" $ []
 
 -- | Events with information about modifier keys (Mouse, Keyboard, Touch)
-class HasModifierKeys e
+class IsEvent e <= HasModifierKeys e 
 
 instance mouseEventHasModifierKeys :: HasModifierKeys MouseEvent
 instance mouseButtonEventHasModifierKeys :: HasModifierKeys MouseButtonEvent
 instance keyboardEventHasModifierKeys :: HasModifierKeys KeyboardEvent
--- instance touchEventHasModifierKeys :: HasModifierKeys TouchEvent
+instance pointerEventHasModifierKEys :: HasModifierKeys PointerEvent
+instance touchEventHasModifierKeys :: HasModifierKeys TouchEvent
 
 -- | Was the alt key held down?
 altKey :: forall e. HasModifierKeys e => e -> Boolean
@@ -501,6 +508,16 @@ button :: MouseButtonEvent -> Int
 button e = e .. "button"
 
 -- Pointer Events
+-- number pointerId
+-- number width
+-- number height
+-- number pressure
+-- number tangentialPressure
+-- number tiltX
+-- number tiltY
+-- number twist
+-- string pointerType
+-- boolean isPrimary
 -- Selection Events
 -- Touch Events
 -- UI Events

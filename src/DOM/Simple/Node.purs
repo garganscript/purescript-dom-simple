@@ -1,18 +1,13 @@
 module DOM.Simple.Node
-  ( class IsNode
-  , name
+  ( name, prevSibling, nextSibling, ownerDocument, parentNode, parentElement, textContent
   ) where
 
 import Prelude ( Unit, ($), pure, unit )
 import Effect ( Effect )
 import Data.Maybe ( Maybe )
 import Data.Nullable ( toMaybe )
-import DOM.Simple.Types ( Document, Element )
+import DOM.Simple.Types ( class IsNode, Document, Element )
 import FFI.Simple ( (..), (...), getProperty, setProperty, delay )
-
-class IsNode n
-
-instance nodeElement :: IsNode Element
 
 name :: forall n. IsNode n => n -> String
 name = getProperty "nodeName"
