@@ -41,13 +41,43 @@ main = do
 
 ## Contributing
 
-Contributions are welcome, but please keep in line with the API.
+Contributions are welcome, but please keep in line with the `simple`
+philosophy. Ask questions if you're not sure :)
 
 ## Notes
 
 We choose to export `window` and `document` as globals. Yes, they
 might not be there in the case you're running under Node. Don't do
 that. How would you even reasonably handle that case?
+
+## Changelog
+
+### 0.2.0
+
+New:
+
+* `D.S.Node`
+  * `contains` to check if a node contains another
+* `D.S.Events`
+  * Lots! Borderline usable now!
+* `D.S.Types`
+  * `DOMRect` (for `D.S.Element.boundingRect`)
+* `D.S.Element`:
+  * `boundingRect`
+* `D.S.EventListener`:
+  * `Callback` type
+  * `addEventListener`
+  * `removeEventListener`
+
+Breakages:
+
+* `D.S.Node`
+  * `class Node` -> `class IsNode`
+
+Misc:
+
+* Upgrade to `ffi-simple` v0.2.1
+* Removed all ffi javascript in favour of `ffi-simple`
 
 ## Copyright and License
 

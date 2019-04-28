@@ -11,5 +11,5 @@ import DOM.Simple.Element
 import DOM.Simple.Document
   ( createElement, createElement', createTextNode, document )
 import DOM.Simple.Node
-import DOM.Simple.Window ( Window, window )
+import DOM.Simple.Window ( Window, window, global )
 
