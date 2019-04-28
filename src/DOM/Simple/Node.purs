@@ -1,60 +1,51 @@
 module DOM.Simple.Node
-  ( class Node
+  ( class IsNode
   , name
   ) where
 
-import Prelude ( Unit, ($), pure )
+import Prelude ( Unit, ($), pure, unit )
 import Effect ( Effect )
 import Data.Maybe ( Maybe )
 import Data.Nullable ( toMaybe )
 import DOM.Simple.Types ( Document, Element )
 import FFI.Simple ( (..), (...), getProperty, setProperty, delay )
 
-class Node n
+class IsNode n
 
-instance nodeElement :: Node Element
+instance nodeElement :: IsNode Element
 
-name :: forall n. Node n => n -> String
+name :: forall n. IsNode n => n -> String
 name = getProperty "nodeName"
 
 -- | Gets the previous sibling
-prevSibling :: forall n m. Node n => Node m => n -> m
+prevSibling :: forall n m. IsNode n => IsNode m => n -> m
 prevSibling = getProperty "previousSibling"
 
 -- | Gets the next sibling
-nextSibling :: forall n m. Node n => Node m => n -> m
+nextSibling :: forall n m. IsNode n => IsNode m => n -> m
 nextSibling = getProperty "nextSibling"
 
-ownerDocument :: forall n m. Node n => Node m => n -> Document
+ownerDocument :: forall n m. IsNode n => IsNode m => n -> Document
 ownerDocument = getProperty "ownerDocument"
 
-parentNode :: forall n m. Node n => Node m => n -> m
+parentNode :: forall n m. IsNode n => IsNode m => n -> m
 parentNode = getProperty "parentNode"
 
-parentElement :: forall n. Node n => n -> Maybe Element
+parentElement :: forall n. IsNode n => n -> Maybe Element
 parentElement n = toMaybe $ n .. "parentElement"
 
-textContent :: forall n. Node n => n -> String
+textContent :: forall n. IsNode n => n -> String
 textContent = getProperty "textContent"
 
-setTextContent :: forall n. Node n => n -> String -> Effect n
-setTextContent n t = delay $ \_ -> pure $ setProperty "textContent" n t
+setTextContent :: forall n. IsNode n => n -> String -> Effect n
+setTextContent n t = delay unit $ \_ -> pure $ setProperty "textContent" n t
 
-appendChild :: forall n m. Node n => Node m => n -> m -> Effect Unit
-appendChild n c = delay $ \_ -> pure $ n ... "appendChild" $ [c]
+appendChild :: forall n m. IsNode n => IsNode m => n -> m -> Effect Unit
+appendChild n c = delay unit $ \_ -> pure $ n ... "appendChild" $ [c]
 
-clone :: forall n. Node n => n -> n
+clone :: forall n. IsNode n => n -> n
 clone n = n ... "cloneNode" $ []
 
--- compareDocumentPosition
--- getRootNode
--- hasChildNodes
--- insertBefore
--- isDefaultNamespace
--- isEqualNode
--- isSameNode
--- lookupPrefix
--- lookupNamespaceURI
--- normalize
--- removeChild
--- replaceChild
+contains :: forall n. IsNode n => n -> n -> Boolean
+contains n o = n ... "contains" $ [o]
+
