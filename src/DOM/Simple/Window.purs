@@ -2,13 +2,14 @@ module DOM.Simple.Window
   ( Window, window, global )
   where
 
-import FFI.Simple
+import Data.Maybe ( Maybe )
+import FFI.Simple as FFI
 
 -- | A DOM Window object
 foreign import data Window :: Type
 
--- | The global window
-foreign import window :: Window
+window :: Window
+window = FFI.unsafeGlobal "window"
 
-global :: forall a. String -> a
-global n = getProperty n window
+global :: forall a. String -> Maybe a
+global = FFI.global
