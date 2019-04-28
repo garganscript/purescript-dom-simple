@@ -9,6 +9,7 @@
     , "functions"
     , "nullable"
     , "prelude"
+    , "psci-support"
     , "spec"
     , "spec-mocha"
     , "unsafe-coerce" ]
