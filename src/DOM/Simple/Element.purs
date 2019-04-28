@@ -1,6 +1,6 @@
 module DOM.Simple.Element
   ( hasAttr, attr, attrNames, setAttr
-  , innerHTML
+  , innerHTML, boundingRect
   , module DOM.Simple.EventListener
   , module DOM.Simple.Child
   , module DOM.Simple.Node
