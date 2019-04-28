@@ -119,9 +119,9 @@ let overrides = {=}
 let additions =
       { ffi-simple =
           mkPackage
-          [ "functions", "nullable", "prelude" ]
+          [ "effect", "functions", "nullable", "prelude", "unsafe-coerce" ]
           "https://github.com/irresponsible/purescript-ffi-simple"
-          "v0.1.2"
+          "v0.2.1"
       , spec-mocha =
           mkPackage
           [ "console", "foldable-traversable", "exceptions", "spec" ]
