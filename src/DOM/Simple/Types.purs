@@ -1,5 +1,6 @@
 module DOM.Simple.Types
-  ( Window, Document, Fragment, Text, Element ) where
+  ( Window, Document, Fragment, Text, Element, DOMRect
+  ) where
 
 import Prelude ( class Show )
 
@@ -29,5 +30,14 @@ instance showDocument :: Show Document where
 instance showWindow :: Show Window where
   show _ = "<DOM.Simple.Window>"
 
+type DOMRect =
+  { x :: Number
+  , y :: Number
+  , width :: Number
+  , height :: Number
+  , top :: Number
+  , right :: Number
+  , bottom :: Number
+  , left :: Number }
 
 

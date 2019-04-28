@@ -9,16 +9,16 @@ module DOM.Simple.Element
   , module DOM.Simple.Sibling
   ) where
 
-import Prelude ( Unit, ($), (<<<), pure )
+import Prelude ( Unit, ($), (<<<), pure, unit )
 import Data.Function.Uncurried ( Fn2, runFn2 )
 import Data.Maybe ( Maybe )
 import Data.Nullable ( Nullable, toMaybe )
 import Effect ( Effect )
 import Effect.Uncurried ( EffectFn3, runEffectFn3 )
 
-import DOM.Simple.Types ( Element )
+import DOM.Simple.Types ( Element, DOMRect )
 import DOM.Simple.EventListener ( class EventListener )
-import DOM.Simple.Node ( class Node, name )
+import DOM.Simple.Node ( name )
 import DOM.Simple.Sibling ( class SiblingNode, prevElement, nextElement )
 import DOM.Simple.Child ( class ChildNode, remove, before, after, replaceWith )
 import DOM.Simple.Parent
@@ -44,7 +44,7 @@ attr :: forall e. ElementNode e => e -> String -> Maybe String
 attr e a = toMaybe $ e ... "getAttribute" $ [a]
 
 setAttr :: forall e. ElementNode e => e -> String -> String -> Effect Unit
-setAttr e a v = delay $ \_ -> pure $ e ... "setAttribute" $ [a, v]
+setAttr e a v = delay unit $ \_ -> pure $ e ... "setAttribute" $ [a, v]
 
 -- | Gets the names of the attributes the element possesses
 attrNames :: forall e. ElementNode e => e -> Array String
@@ -52,3 +52,6 @@ attrNames e = e ... "getAttributeNames" $ []
 
 innerHTML :: forall e. ElementNode e => e -> String
 innerHTML e = e .. "innerHTML"
+
+boundingRect :: forall e. ElementNode e => e -> DOMRect
+boundingRect e = e ... "getBoundingClientRect" $ []
