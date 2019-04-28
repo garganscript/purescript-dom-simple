@@ -4,12 +4,11 @@ module DOM.Simple.Document
 
 import Prelude ( ($) )
 import DOM.Simple.Types ( Document, Element, Text )
-import FFI.Simple ( (...), (..) )
-import DOM.Simple.Window ( window )
+import FFI.Simple ( (...),  unsafeGlobal )
 
 -- | The global document. Will be undefined on node.
 document :: Document
-document = window .. "document"
+document = unsafeGlobal "document"
 
 -- | Creates a new DOM element of the given tag using the global document
 createElement :: String -> Element
@@ -25,5 +24,4 @@ createTextNode = createTextNode' document
 -- | Create a text node with the given text
 createTextNode' :: Document -> String -> Text
 createTextNode' d s = d ... "createTextNode" $ [s]
-
 
