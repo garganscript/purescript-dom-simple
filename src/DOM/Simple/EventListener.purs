@@ -1,5 +1,5 @@
 module DOM.Simple.EventListener
-  ( Callback
+  ( Callback, callback
   , dispatchEvent, addEventListener, removeEventListener
   ) where
 
