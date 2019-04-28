@@ -1,5 +1,6 @@
 module DOM.Simple.Node
-  ( name, prevSibling, nextSibling, ownerDocument, parentNode, parentElement, textContent
+  ( name, prevSibling, nextSibling, ownerDocument
+  , parentNode, parentElement, textContent, contains
   ) where
 
 import Prelude ( Unit, ($), pure, unit )
