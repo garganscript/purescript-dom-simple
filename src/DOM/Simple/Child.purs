@@ -2,7 +2,6 @@ module DOM.Simple.Child ( remove, before, after, replaceWith ) where
 
 import Prelude ( Unit, ($), pure, unit )
 import Effect ( Effect )
-import Effect.Uncurried ( EffectFn1, runEffectFn1, EffectFn2, runEffectFn2 )
 
 import DOM.Simple.Types ( class IsChild, Element )
 import FFI.Simple ( (...), delay )

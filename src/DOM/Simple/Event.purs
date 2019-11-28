@@ -49,7 +49,6 @@ module DOM.Simple.Event
 
 import Prelude ( class Show, Unit, ($), (<$>), (<<<), show, pure, unit )
 import Effect ( Effect )
-import Data.Array as A
 import Data.Maybe ( Maybe(..) )
 import Data.Nullable ( toMaybe )
 import DOM.Simple.Types ( Element )

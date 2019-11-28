@@ -8,18 +8,16 @@ module DOM.Simple.Element
   , module DOM.Simple.Sibling
   ) where
 
-import Prelude ( Unit, ($), (<<<), pure, unit )
-import Data.Function.Uncurried ( Fn2, runFn2 )
+import Prelude (Unit, pure, unit, ($))
 import Data.Maybe ( Maybe )
-import Data.Nullable ( Nullable, toMaybe )
+import Data.Nullable (toMaybe)
 import Effect ( Effect )
-import Effect.Uncurried ( EffectFn3, runEffectFn3 )
 
-import DOM.Simple.Types
-import DOM.Simple.EventListener
-import DOM.Simple.Node
-import DOM.Simple.Sibling
-import DOM.Simple.Child
+import DOM.Simple.Types (class IsElement, DOMRect)
+import DOM.Simple.EventListener (Callback, addEventListener, callback, dispatchEvent, removeEventListener)
+import DOM.Simple.Node (contains, name, nextSibling, ownerDocument, parentElement, parentNode, prevSibling, textContent)
+import DOM.Simple.Sibling (nextElement, prevElement)
+import DOM.Simple.Child (after, before, remove, replaceWith)
 import DOM.Simple.Parent
 import FFI.Simple ( (...), (..), delay )
 

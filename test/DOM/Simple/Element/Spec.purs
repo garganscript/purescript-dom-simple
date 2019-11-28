@@ -1,11 +1,7 @@
 module DOM.Simple.Element.Spec where
 
 import Prelude
-import Data.Array as A
 import Data.Maybe ( Maybe(..) )
-import Data.Traversable ( traverse, sequence_ )
-import Data.Tuple ( Tuple(..) )
-import Effect ( Effect )
 import Effect.Class ( liftEffect )
 -- import Effect.Aff (launchAff_)
 

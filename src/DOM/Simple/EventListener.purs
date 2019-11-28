@@ -4,7 +4,7 @@ module DOM.Simple.EventListener
   ) where
 
 import Prelude ( Unit, ($), (<<<), pure, unit )
-import DOM.Simple.Types ( class IsEventListener, Element )
+import DOM.Simple.Types (class IsEventListener)
 import DOM.Simple.Event ( class IsEvent )
 import Effect ( Effect )
 import Effect.Uncurried ( EffectFn1, mkEffectFn1 )
@@ -27,8 +27,8 @@ addEventListener
   -> String
   -> Callback event
   -> Effect Unit
-addEventListener obj name callback =
-  delay unit $ \_ -> pure $ obj ... "addEventListener" $ args2 name callback
+addEventListener obj name cb =
+  delay unit $ \_ -> pure $ obj ... "addEventListener" $ args2 name cb
 
 removeEventListener
   :: forall listener event
@@ -38,5 +38,5 @@ removeEventListener
   -> String
   -> Callback event
   -> Effect Unit
-removeEventListener obj name callback =
-  delay unit $ \_ -> pure $ obj ... "removeEventListener" $ args2 name callback
+removeEventListener obj name cb =
+  delay unit $ \_ -> pure $ obj ... "removeEventListener" $ args2 name cb

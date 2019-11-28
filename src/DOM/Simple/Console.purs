@@ -2,11 +2,6 @@ module DOM.Simple.Console where
 
 import Prelude ( Unit, unit, ($), pure )
 import Effect ( Effect )
-import Effect.Uncurried
-  ( EffectFn1, runEffectFn1, EffectFn2, runEffectFn2
-  , EffectFn3, runEffectFn3, EffectFn4, runEffectFn4
-  , EffectFn5, runEffectFn5, EffectFn6, runEffectFn6
-  , EffectFn7, runEffectFn7, EffectFn8, runEffectFn8 )
 import FFI.Simple
  ( (...), delay, unsafeGlobal
  , args2, args3, args4, args5, args6, args7, args8 )
