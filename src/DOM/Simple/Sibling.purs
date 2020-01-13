@@ -4,7 +4,7 @@ module DOM.Simple.Sibling
 
 import Prelude ( (<<<) )
 import Data.Maybe ( Maybe )
-import Data.Nullable ( Nullable, toMaybe )
+import Data.Nullable (toMaybe)
 
 import FFI.Simple ( getProperty )
 import DOM.Simple.Types ( class IsSibling, Element )

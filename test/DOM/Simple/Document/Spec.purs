@@ -1,11 +1,6 @@
 module DOM.Simple.Document.Spec where
 
-import Prelude
-import Data.Array as A
-import Data.Maybe ( Maybe(..) )
-import Data.Traversable (traverse)
-import Data.Tuple ( Tuple(..) )
-import Effect ( Effect )
+import Prelude (Unit, discard, ($))
 import Effect.Class ( liftEffect )
 import DOM.Simple.Console
 -- import Effect.Aff (launchAff_)

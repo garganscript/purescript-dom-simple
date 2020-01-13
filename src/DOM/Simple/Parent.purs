@@ -6,12 +6,12 @@ module DOM.Simple.Parent
 
 import Prelude ( Unit, ($), (<<<), pure, unit )
 import Data.Maybe ( Maybe )
-import Data.Nullable ( Nullable, toMaybe )
+import Data.Nullable (toMaybe)
 import Effect ( Effect )
 import FFI.Simple ( getProperty, applyMethod, delay )
 import FFI.Simple.PseudoArray as Array
 
-import DOM.Simple.Types ( class IsParent, Element, Document, Fragment )
+import DOM.Simple.Types (class IsParent, Element)
 
 -- | Returns the number of child Elements
 childCount :: forall n. IsParent n => n -> Int
