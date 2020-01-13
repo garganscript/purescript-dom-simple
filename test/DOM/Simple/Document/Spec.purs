@@ -2,8 +2,7 @@ module DOM.Simple.Document.Spec where
 
 import Prelude (Unit, discard, ($))
 import Effect.Class ( liftEffect )
-import DOM.Simple.Console
--- import Effect.Aff (launchAff_)
+import DOM.Simple.Console (log2)
 import Test.Spec ( Spec, describe, it )
 import Test.Spec.Assertions ( shouldEqual )
 import DOM.Simple.Document as Document
@@ -16,6 +15,6 @@ createElementSpec =
       let e = Document.createElement "i"
       liftEffect $ log2 "element:" e
       (Node.name e) `shouldEqual` "I"
-      
+
 spec :: Spec Unit
 spec = createElementSpec

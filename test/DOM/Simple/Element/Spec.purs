@@ -3,11 +3,9 @@ module DOM.Simple.Element.Spec where
 import Prelude
 import Data.Maybe ( Maybe(..) )
 import Effect.Class ( liftEffect )
--- import Effect.Aff (launchAff_)
 
 import Test.Spec ( Spec, describe, it )
 import Test.Spec.Assertions ( shouldEqual )
--- import Test.Spec.QuickCheck (quickCheck')
 import DOM.Simple.Document as Document
 import DOM.Simple.Element as Element
 
