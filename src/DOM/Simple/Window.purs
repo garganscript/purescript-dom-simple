@@ -1,12 +1,10 @@
 module DOM.Simple.Window
-  ( Window, window, global )
+  ( window, global )
   where
 
 import Data.Maybe ( Maybe )
 import FFI.Simple as FFI
-
--- | A DOM Window object
-foreign import data Window :: Type
+import DOM.Simple.Types (Window)
 
 window :: Window
 window = FFI.unsafeGlobal "window"
