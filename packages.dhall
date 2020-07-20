@@ -11,7 +11,7 @@ let additions =
           mkPackage
             [ "effect", "functions", "nullable", "prelude", "unsafe-coerce" ]
             "https://github.com/irresponsible/purescript-ffi-simple"
-            "v0.2.1"
+            "v0.2.10"
       , spec-mocha =
           mkPackage
             [ "console", "foldable-traversable", "exceptions", "spec" ]

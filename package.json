@@ -1,6 +1,6 @@
 {
   "name": "purescript-dom-simple",
-  "version": "0.1.0",
+  "version": "0.2.7",
   "description": "Simple DOM bindings for purescript",
   "scripts": {
     "upgrade-set": "spago package-set-upgrade",
@@ -17,10 +17,10 @@
     "karma-cli": "^2.0.0",
     "karma-mocha": "^1.3.0",
     "mocha": "^7.0.0",
-    "psc-package": "^3.0.1",
-    "pulp": "^13.0.0",
-    "purescript": "^0.13.5",
-    "spago": "^0.7.5"
+    "psc-package": "^4.0.1",
+    "pulp": "^14.0.0",
+    "purescript": "^0.13.8",
+    "spago": "^0.10.0"
   },
   "dependencies": {}
 }
