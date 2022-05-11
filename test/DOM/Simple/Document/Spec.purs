@@ -1,12 +1,12 @@
 module DOM.Simple.Document.Spec where
 
-import Prelude (Unit, discard, ($))
-import Effect.Class ( liftEffect )
 import DOM.Simple.Console (log2)
-import Test.Spec ( Spec, describe, it )
-import Test.Spec.Assertions ( shouldEqual )
 import DOM.Simple.Document as Document
 import DOM.Simple.Node as Node
+import Effect.Class ( liftEffect )
+import Prelude (Unit, discard, ($))
+import Test.Spec ( Spec, describe, it )
+import Test.Spec.Assertions ( shouldEqual )
 
 createElementSpec :: Spec Unit
 createElementSpec =

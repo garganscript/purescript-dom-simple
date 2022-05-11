@@ -1,16 +1,15 @@
 { sources = [ "src/**/*.purs", "test/**/*.purs" ]
 , name = "dom-simple"
 , dependencies =
-    [ "arrays"
-    , "console"
+    [ "aff"
+    , "arrays"
     , "effect"
-    , "functions"
+    , "ffi-simple"
+    , "maybe"
     , "nullable"
     , "prelude"
-    , "spec"
-    , "spec-mocha"
     , "unsafe-coerce"
-    , "ffi-simple"
-    ]
+    , "spec"
+   ]
 , packages = ./packages.dhall
 }
