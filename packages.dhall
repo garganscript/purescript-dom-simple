@@ -15,7 +15,6 @@ let additions =
           , "nullable"
           , "prelude"
           , "refs"
-          , "spec"
           , "tuples"
           , "unsafe-coerce"
           , "unsafe-reference" ]
