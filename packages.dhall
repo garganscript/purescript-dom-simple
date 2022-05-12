@@ -19,7 +19,7 @@ let additions =
           , "tuples"
           , "unsafe-coerce"
           , "unsafe-reference" ]
-        , repo = "https://github.com/irresponsible/purescript-ffi-simple"
+        , repo = "https://github.com/garganscript/purescript-ffi-simple"
         , version = "v0.3.1"
         }
       , spec-mocha =
@@ -28,5 +28,6 @@ let additions =
         , version = "v4.0.0"
         }
       }
+      
 
 in  upstream // overrides // additions
