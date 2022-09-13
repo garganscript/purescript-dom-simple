@@ -2,15 +2,15 @@
 , name = "dom-simple"
 , dependencies =
     [ "arrays"
-    , "console"
     , "effect"
-    , "functions"
+    , "ffi-simple"
+    , "foldable-traversable"
+    , "maybe"
     , "nullable"
     , "prelude"
     , "spec"
     , "spec-mocha"
     , "unsafe-coerce"
-    , "ffi-simple"
     ]
 , packages = ./packages.dhall
 }
