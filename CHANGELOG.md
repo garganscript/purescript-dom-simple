@@ -2,7 +2,7 @@
 
 ## 0.4.0
 
-* Migrate to `spago@next`. Publish package to Purescript Packages.
+* Migrate to `spago@next`.
 
 ## 0.2.1
 

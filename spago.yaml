@@ -13,23 +13,20 @@ workspace:
   # See "The lock file" section for more details.
   lock: false
 
-
 package:
   name: dom-simple
   dependencies:
-    - arrays
-    - effect
-    - ffi-simple
-    - foldable-traversable
-    - maybe
-    - nullable
-    - prelude
-    - spec
-    - spec-mocha
-    - unsafe-coerce
+    - effect: ">=4.0.0 <5.0.0"
+    - ffi-simple: "*"
+    - maybe: ">=6.0.0 <7.0.0"
+    - nullable: ">=6.0.0 <7.0.0"
+    - prelude: ">=6.0.1 <7.0.0"
+    - unsafe-coerce: ">=6.0.0 <7.0.0"
   test:
     main: Test.Main
-    dependencies: []
+    dependencies:
+      - spec: ">=7.6.0 <8.0.0"
+      - spec-mocha: ">=5.1.0 <6.0.0"
   # Optional section for configuring the `spago publish` command.
   # If you intend to publish your package, this section becomes mandatory.
   publish:
@@ -50,10 +47,10 @@ package:
     # the `exclude` one, as detailed in the specification:
     # https://github.com/purescript/registry-dev/blob/master/SPEC.md#33-manifest
     exclude:
-    - "test/graphs/**/*"
-    # The place where the Registry will fetch the source from.
-    # This is optional since you might want to release the code without
-    # publishing to the Registry, which is what this is needed for.
+      - "test/graphs/**/*"
+      # The place where the Registry will fetch the source from.
+      # This is optional since you might want to release the code without
+      # publishing to the Registry, which is what this is needed for.
     location:
       githubOwner: garganscript
       githubRepo: purescript-dom-simple
